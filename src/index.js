@@ -40,6 +40,11 @@ async function getRandomBlock() {
     return result;
 }
 
+//Imprime o nome do personagem, o tipo de bloco e o valor do dado rolado.
+async function logRollResult(characterName, block, diceResult, attribute) {
+    console.log(`${characterName} 🎲 rolou um dado de ${block} ${diceResult}`);
+}
+
 // Essa função simula uma corrida de 5 rodadas entre dois personagens, sorteando o resultado a cada rodada.
 async function playRaceEngine(character1,character2) {
     for(let round = 1; round <= 5; round++) {
@@ -60,22 +65,24 @@ async function playRaceEngine(character1,character2) {
         if(block === "RETA"){
             totalTestSkill1 = diceResult1 + character1.VELOCIDADE;
             totalTestSkill2 = diceResult2 + character2.VELOCIDADE;
+            console.log(`${player1.NOME} rolou um dado de ${block} ${diceResult1}`)
+            console.log(`${player2.NOME} rolou um dado de ${block} ${diceResult2}`)
         }
         if(block === "CURVA"){
             totalTestSkill1 = diceResult1 + character1.MANOBRABILIDADE;
-            totalTestSkill2 = diceResult2 + character2.MANOBRABILIDADE;            
+            totalTestSkill2 = diceResult2 + character2.MANOBRABILIDADE;
+            console.log(`${player1.NOME} rolou um dado de ${block} ${diceResult1}`)
+            console.log(`${player2.NOME} rolou um dado de ${block} ${diceResult2}`)            
         }
         if(block === "CONFRONTO"){
-            let powerResult1 = diceResult1 + character1.PODER;
-            let powerResult2 = diceResult2 + character2.PODER;
         }
     }
 }
 
 // O JavaScript por padrão é sincrono, ou seja, executa tudo ao mesmo tempo. O async quer dizer que essa função vai esperar um passo anterior terminar para começar a executar essa função.
 // Exatamente a mesma função acima, porém, colocando as variaveis do nome do objeto player 1 e player 2.
-(async function main_Setimo_Exercicio() {
-    console.log(`7° Exercício: 🏁 Corrida entre ${player1.NOME} e ${player2.NOME} começando...`);
+(async function main_Oitavo_Exercicio() {
+    console.log(`8° Exercício: 🏁 Corrida entre ${player1.NOME} e ${player2.NOME} começando...`);
 
     await playRaceEngine(player1, player2)
 })();
