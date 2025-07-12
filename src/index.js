@@ -35,7 +35,7 @@ async function getRandomBlock() {
             result = "CURVA"
             break;
         default:
-                result = "CONFRONTO"
+            result = "CONFRONTO"
     }
     return result;
 }
@@ -47,14 +47,35 @@ async function playRaceEngine(character1,character2) {
 
         //sortear bloco
         let block = await getRandomBlock()
-        console.log(`Bloco: ${block}`)    
+        console.log(`Bloco: ${block}`)
+        
+        //rolar os dados
+        let diceResult1 = await rollDice();
+        let diceResult2 =  await rollDice();
+
+        //Teste de habilidade
+        let totalTestSkill1 = 0;
+        let totalTestSkill2 = 0;
+
+        if(block === "RETA"){
+            totalTestSkill1 = diceResult1 + character1.VELOCIDADE;
+            totalTestSkill2 = diceResult2 + character2.VELOCIDADE;
+        }
+        if(block === "CURVA"){
+            totalTestSkill1 = diceResult1 + character1.MANOBRABILIDADE;
+            totalTestSkill2 = diceResult2 + character2.MANOBRABILIDADE;            
+        }
+        if(block === "CONFRONTO"){
+            let powerResult1 = diceResult1 + character1.PODER;
+            let powerResult2 = diceResult2 + character2.PODER;
+        }
     }
 }
 
 // O JavaScript por padrão é sincrono, ou seja, executa tudo ao mesmo tempo. O async quer dizer que essa função vai esperar um passo anterior terminar para começar a executar essa função.
 // Exatamente a mesma função acima, porém, colocando as variaveis do nome do objeto player 1 e player 2.
-(async function main_Sexto_Exercicio() {
-    console.log(`6° Exercício: 🏁 Corrida entre ${player1.NOME} e ${player2.NOME} começando...`);
+(async function main_Setimo_Exercicio() {
+    console.log(`7° Exercício: 🏁 Corrida entre ${player1.NOME} e ${player2.NOME} começando...`);
 
     await playRaceEngine(player1, player2)
 })();
