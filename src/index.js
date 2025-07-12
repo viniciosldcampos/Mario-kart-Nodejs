@@ -15,10 +15,8 @@ const player2 = {
     PONTOS: 0,
 };
 
-// Async significa que a função não bloqueará a execução do restante do código enquanto aguarda o resultado de uma operação assíncrona.
-// A função main abaixo é chamada de função de entrada e vai chamar as demais funções.
-// Forma de chamar a função main.
-// A colocação de '(' antes do async  o fechamento do parenteses junto com abre e fecha parenteses ')()' depois da função mostra que aquela função é auto-invocavel.
-(async function main_segundo_Exercicio() {
-    console.log("2° Exercício: Hello");
-})();
+// Ao apertar (Windows + .) no teclado você tem acesso aos emojis.
+async function main_terceiro_Exercicio() {
+    console.log("3° Exercício: 🏁 Corrida entre Mario e Luigi começando...");
+}
+main_terceiro_Exercicio();
