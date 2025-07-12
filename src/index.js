@@ -15,8 +15,7 @@ const player2 = {
     PONTOS: 0,
 };
 
-// Ao apertar (Windows + .) no teclado você tem acesso aos emojis.
-async function main_terceiro_Exercicio() {
-    console.log("3° Exercício: 🏁 Corrida entre Mario e Luigi começando...");
-}
-main_terceiro_Exercicio();
+// Exatamente a mesma função acima, porém, colocando as variaveis do nome do objeto player 1 e player 2.
+(async function main_quarto_Exercicio() {
+    console.log(`4° Exercício: 🏁 Corrida entre ${player1.NOME} e ${player2.NOME} começando...`);
+})();
