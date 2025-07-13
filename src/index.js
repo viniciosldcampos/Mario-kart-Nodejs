@@ -126,7 +126,9 @@ async function playRaceEngine(character1,character2) {
                 console.log(`${character2.NOME} venceu o confronto! ${character1.NOME} perdeu 1 ponto.`);
                 character1.PONTOS--;
             }
+            console.log( powerResult2 === powerResult1 ? "Confronto empatado! Nenhum ponto foi perdido" : "");
         }
+        
         // verificando o vencedor
         if (totalTestSkill1 > totalTestSkill2) {
             console.log(`${character1.NOME} marcou um ponto!`);
