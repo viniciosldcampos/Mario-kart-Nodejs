@@ -65,14 +65,16 @@ async function playRaceEngine(character1,character2) {
         if(block === "RETA"){
             totalTestSkill1 = diceResult1 + character1.VELOCIDADE;
             totalTestSkill2 = diceResult2 + character2.VELOCIDADE;
-            console.log(`${player1.NOME} rolou um dado de ${block} ${diceResult1}`)
-            console.log(`${player2.NOME} rolou um dado de ${block} ${diceResult2}`)
+
+            await logRollResult(character1.NOME, "Velocidade", diceResult1, character1.VELOCIDADE);
+            await logRollResult(character2.NOME, "Velocidade", diceResult2, character2.VELOCIDADE);
         }
         if(block === "CURVA"){
             totalTestSkill1 = diceResult1 + character1.MANOBRABILIDADE;
             totalTestSkill2 = diceResult2 + character2.MANOBRABILIDADE;
-            console.log(`${player1.NOME} rolou um dado de ${block} ${diceResult1}`)
-            console.log(`${player2.NOME} rolou um dado de ${block} ${diceResult2}`)            
+
+            await logRollResult(character1.NOME, "Manobrabilidade", diceResult1, character1.MANOBRABILIDADE);
+            await logRollResult(character2.NOME, "Manobrabilidade", diceResult2, character2.MANOBRABILIDADE);
         }
         if(block === "CONFRONTO"){
             let powerResult1 = diceResult1 + character1.PODER;
@@ -99,11 +101,25 @@ async function playRaceEngine(character1,character2) {
         }
     }
 }
+// Função que exibe o resultado final da corrida e declara o vencedor com base na pontuação.
+async function declareWinner(character1, character2) {
+    console.log("Resultado Final")
+    console.log(`${character1.NOME}: ${character1.PONTOS} ponto(s)`)
+    console.log(`${character2.NOME}: ${character2.PONTOS} ponto(s)`)
+    
+    if(character1.PONTOS > character2.PONTOS) {
+        console.log(`${character1.NOME} venceu a corrida! Parabéns! 🏆`);
+    } else if (character2.PONTOS > character1.PONTOS) {
+        console.log(`${character2.NOME} venceu a corrida! Parabéns! 🏆`);
+    } else {
+        console.log("A corrida terminou empatada!");
+    }
+}
 
 // O JavaScript por padrão é sincrono, ou seja, executa tudo ao mesmo tempo. O async quer dizer que essa função vai esperar um passo anterior terminar para começar a executar essa função.
 // Exatamente a mesma função acima, porém, colocando as variaveis do nome do objeto player 1 e player 2.
-(async function main_Decimo_Exercicio() {
-    console.log(`10° Exercício: 🏁 Corrida entre ${player1.NOME} e ${player2.NOME} começando...`);
+(async function main_DecimoPrimeiro_Exercicio() {
+    console.log(`11° Exercício: 🏁 Corrida entre ${player1.NOME} e ${player2.NOME} começando...`);
 
     await playRaceEngine(player1, player2)
 })();
