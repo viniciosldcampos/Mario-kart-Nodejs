@@ -42,7 +42,7 @@ async function getRandomBlock() {
 
 //Imprime o nome do personagem, o tipo de bloco e o valor do dado rolado.
 async function logRollResult(characterName, block, diceResult, attribute) {
-    console.log(`${characterName} 🎲 rolou um dado de ${block} ${diceResult}`);
+    console.log(`${characterName} 🎲 rolou um dado de ${block} ${diceResult} + ${attribute} = ${diceResult + attribute}`);
 }
 
 // Essa função simula uma corrida de 5 rodadas entre dois personagens, sorteando o resultado a cada rodada.
@@ -75,22 +75,35 @@ async function playRaceEngine(character1,character2) {
             console.log(`${player2.NOME} rolou um dado de ${block} ${diceResult2}`)            
         }
         if(block === "CONFRONTO"){
+            let powerResult1 = diceResult1 + character1.PODER;
+            let powerResult2 = diceResult2 + character2.PODER;  
+
+            console.log(`${character1.NOME} confrontou com ${character2.NOME} 🥊`);
+            
+            await logRollResult(character1.NOME, "poder", diceResult1, character1.PODER);
+            await logRollResult(character2.NOME, "poder", diceResult2, character2.PODER);
+        
+            character2.PONTOS -= powerResult1 > powerResult2 && character2.PONTOS > 0 ? 1 : 0;
+            
+            character1.PONTOS -= powerResult2 > powerResult1 && character1.PONTOS > 0 ? 1 : 0;
+            
+            console.log(powerResult1 === powerResult2 ? "Os jogadores empataram. Nenhum ponto perdido!" : "");            
+        }
         // verificando o vencedor
-            if (totalTestSkill1 > totalTestSkill2) {
-                console.log(`${character1.NOME} marcou um ponto!`);
-                character1.PONTOS++;           
-            } else if(totalTestSkill2 > totalTestSkill1) {
-                console.log(`${character2.NOME} marcou um ponto!`);
-                character2.PONTOS++;
-            }
+        if (totalTestSkill1 > totalTestSkill2) {
+            console.log(`${character1.NOME} marcou um ponto!`);
+            character1.PONTOS++;           
+        } else if(totalTestSkill2 > totalTestSkill1) {
+            console.log(`${character2.NOME} marcou um ponto!`);
+            character2.PONTOS++;
         }
     }
 }
 
 // O JavaScript por padrão é sincrono, ou seja, executa tudo ao mesmo tempo. O async quer dizer que essa função vai esperar um passo anterior terminar para começar a executar essa função.
 // Exatamente a mesma função acima, porém, colocando as variaveis do nome do objeto player 1 e player 2.
-(async function main_Nono_Exercicio() {
-    console.log(`9° Exercício: 🏁 Corrida entre ${player1.NOME} e ${player2.NOME} começando...`);
+(async function main_Decimo_Exercicio() {
+    console.log(`10° Exercício: 🏁 Corrida entre ${player1.NOME} e ${player2.NOME} começando...`);
 
     await playRaceEngine(player1, player2)
 })();
