@@ -85,11 +85,47 @@ async function playRaceEngine(character1,character2) {
             await logRollResult(character1.NOME, "poder", diceResult1, character1.PODER);
             await logRollResult(character2.NOME, "poder", diceResult2, character2.PODER);
         
-            character2.PONTOS -= powerResult1 > powerResult2 && character2.PONTOS > 0 ? 1 : 0;
+            // Trecho 1
+            // if (powerResult1 > powerResult2) {
+            //     if(character2.PONTOS > 0) {
+            //         character2.PONTOS--;
+            //     }
+            // }
+            // // Esse trecho faz a mesma função que o trecho 1 acima.
+            // character2.PONTOS -= powerResult1 > powerResult2 && character2.PONTOS > 0 ? 1 : 0;
+
+            // Fazendo o trecho acima usando o if
+            if(powerResult1 > powerResult2 && character2.PONTOS > 0){
+                character2.PONTOS--;
+            }
+
+            // // Trecho 2
+            // if (powerResult2 > powerResult1) {
+            //     if(character1.PONTOS > 0) {
+            //         character1.PONTOS--;
+            //     }
+            // }
+            // // Esse trecho faz a mesma função que o trecho 2 acima.
+            // character1.PONTOS -= powerResult2 > powerResult1 && character1.PONTOS > 0 ? 1 : 0;
             
-            character1.PONTOS -= powerResult2 > powerResult1 && character1.PONTOS > 0 ? 1 : 0;
-            
-            console.log(powerResult1 === powerResult2 ? "Os jogadores empataram. Nenhum ponto perdido!" : "");            
+            // Fazendo o trecho acima usando o if
+            if(powerResult2 > powerResult1 && character1.PONTOS > 0){
+                console.log(`${character1.NOME} venceu o confronto! ${character2.NOME} perdeu 1 ponto.`);
+                character2.PONTOS--;
+            }
+
+            // Trecho 3
+            // if (powerResult1 === powerResult2) {
+            //     console.log("Os jogadores empataram. Nenhum ponto perdido!");
+            // }
+            // // Esse trecho faz a mesma função que o trecho 3 acima.
+            // console.log(powerResult1 === powerResult2 ? "Os jogadores empataram. Nenhum ponto perdido!" : "");
+        
+            // Fazendo o trecho acima usando o if
+            if(powerResult2 > powerResult1 && character1.PONTOS > 0){
+                console.log(`${character2.NOME} venceu o confronto! ${character1.NOME} perdeu 1 ponto.`);
+                character1.PONTOS--;
+            }
         }
         // verificando o vencedor
         if (totalTestSkill1 > totalTestSkill2) {
@@ -122,4 +158,5 @@ async function declareWinner(character1, character2) {
     console.log(`11° Exercício: 🏁 Corrida entre ${player1.NOME} e ${player2.NOME} começando...`);
 
     await playRaceEngine(player1, player2)
+    await declareWinner(player1, player2)
 })();
