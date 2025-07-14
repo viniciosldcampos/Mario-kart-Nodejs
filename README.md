@@ -106,14 +106,14 @@ async function playRaceEngine(character1, character2) {
 }
 ```
 Realiza as 5 rodadas:
-Sorteia o bloco
-Rola dados para os dois personagens
-Soma com atributo correspondente
-Atualiza pontuação com base no resultado
+- Sorteia o bloco
+- Rola dados para os dois personagens
+- Soma com atributo correspondente
+- Atualiza pontuação com base no resultado
   
 Especial no CONFRONTO:
-O personagem perdedor perde 1 ponto
-Se empatar, nada acontece
+- O personagem perdedor perde 1 ponto
+- Se empatar, nada acontece
   
 ### 6. 🏁 Declarar Vencedor
 ```js
@@ -130,9 +130,9 @@ Mostra o resultado final e declara o vencedor (ou empate).
 })();
 ```
 Inicia a corrida:
-Exibe mensagem inicial
-Executa o motor da corrida
-Mostra o vencedor ao final
+- Exibe mensagem inicial
+- Executa o motor da corrida
+- Mostra o vencedor ao final
   
 ### 📎 Licença
 Este projeto é livre para estudo, uso e modificação com fins educacionais.
